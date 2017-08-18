@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>House of Max</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="css/logo-nav.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="jquery.fixedbg.min.js"></script>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+
+<!-- cloudflare -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+  
+<!--- 6 images corousel --->
+ <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
+
+
+<script>
+var navbarHeight = $('.navbar').height(); 
+
+$(window).scroll(function() {
+  var navbarColor = "0,0,0";
+  var smallLogoHeight = $('.small-logo').height();
+  var bigLogoHeight = $('.big-logo').height();
+  
+  
+  var smallLogoEndPos = 0;
+  var smallSpeed = (smallLogoHeight / bigLogoHeight);
+  
+  var ySmall = ($(window).scrollTop() * smallSpeed); 
+  
+  var smallPadding = navbarHeight - ySmall;
+  if (smallPadding > navbarHeight) { smallPadding = navbarHeight; }
+  if (smallPadding < smallLogoEndPos) { smallPadding = smallLogoEndPos; }
+  if (smallPadding < 0) { smallPadding = 0; }
+  
+  $('.small-logo-container ').css({ "padding-top": smallPadding});
+  
+  var navOpacity = ySmall / smallLogoHeight; 
+  if  (navOpacity > 1) { navOpacity = 1; }
+  if (navOpacity < 0 ) { navOpacity = 0; }
+  var navBackColor = 'rgba(' + navbarColor + ',' + navOpacity + ')';
+  $('.navbar').css({"background-color": navBackColor});
+  
+  var shadowOpacity = navOpacity * 0.4;
+  if ( ySmall > 1) {
+    $('.navbar').css({"box-shadow": "0 2px 3px rgba(0,0,0," + shadowOpacity + ")"});
+  } else {
+    $('.navbar').css({"box-shadow": "none"});
+  }
+  
+});
+
+
+(function( $ ) {
+
+    //Function to animate slider captions 
+	function doAnimations( elems ) {
+		//Cache the animationend event in a variable
+		var animEndEv = 'webkitAnimationEnd animationend';
+		
+		elems.each(function () {
+			var $this = $(this),
+				$animationType = $this.data('animation');
+			$this.addClass($animationType).one(animEndEv, function () {
+				$this.removeClass($animationType);
+			});
+		});
+	}
+	
+	//Variables on page load 
+	var $myCarousel = $('#sg-carousel'),
+		$firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+		
+	//Initialize carousel 
+	$myCarousel.carousel();
+	
+	//Animate captions in first slide on page load 
+	doAnimations($firstAnimatingElems);
+	
+	//Pause carousel  
+	$myCarousel.carousel('pause');
+	
+	
+	//Other slides to be animated on carousel slide event 
+	$myCarousel.on('slide.bs.carousel', function (e) {
+		var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
+		doAnimations($animatingElems);
+	});  
+   
+	
+})(jQuery);	
+
+
+//6 ITEMS SLIDER
+
+$(document).ready(function(){
+
+$('#itemslider').carousel({ interval: 3000 });
+
+$('.carousel-showmanymoveone .item').each(function(){
+var itemToClone = $(this);
+
+for (var i=1;i<6;i++) {
+itemToClone = itemToClone.next();
+
+if (!itemToClone.length) {
+itemToClone = $(this).siblings(':first');
+}
+
+itemToClone.children(':first-child').clone()
+.addClass("cloneditem-"+(i))
+.appendTo($(this));
+}
+});
+});
+
+
+</script>
+  
+</head>
+
+     <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+      <div class="small-logo-container">
+        <a class="small-logo" style="text-decoration: none; color: #fff;"  href="#">HOUSE OF MAX</a>
+          </div>
+        </div>
+        <div class="navbar-collapse collapse">
+          
+    <ul class="nav navbar-nav navbar-right">
+    <li class="active"><a href="#">WHAT'S NEW</a></li>
+    <li><a href="#">RINGS</a></li>
+    <li><a href="#">CHAINS</a></li>
+    <li><a href="#">NECKLACES</a></li>
+           
+    <li><a href="#">WRISTWEAR</a></li>
+    <li><a href="#">ABOUT</a></li>
+    <li><a href="#">CONTACTS</a></li>
+    </ul>
+        </div><!--nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container-fluid big-logo-row">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 big-logo-container">
+            <h1 class="big-logo" style="padding-top:40px; color:#fff">HOUSE OF MAX</h1>
+          </div><!--col-xs-12 -->
+        </div><!--row -->
+      </div><!--container -->
+    </div><!--container-fluid -->
+       
+       
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--slider -->
+
+<div class="container-fluid">
+
+	<div class="row">
+		<div id="sg-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel" data-slide-to="1" class=""></li>
+				<li data-target="#carousel" data-slide-to="2" class=""></li>
+				<li data-target="#carousel" data-slide-to="3" class=""></li>
+			</ol>
+      
+      
+      
+			<!-- Carousel items -->
+      
+      
+			<div class="carousel-inner carousel-zoom">
+				<div class="item active"><img class="img-responsive" src="https://lh3.googleusercontent.com/SuFGMipTDyh18v2WdCi5YaHQBjQgFmHCdEpNbHhHE_GOMwS0ZjWrd_zYbZhmqGCPKFHPcwlJsjpsZazrp2k6fin4LumFqfSDCXFdIN0gR9VtWAHnsp-aAYloUBcvyJhqWMtV79Dl5UwHShc1eWtiRKHJbIp1lX3ucksD92rBeiftGzsCZMVdwpt2Q_OGTGX98FE5RM3lkEPT6x8y8c-BUoyfnzmDjex9mQSEoIfjFsWeroLGpUJg6TPPYrSy1w3Qj4YgO3FPElApMB3I-IXYwwyCIxPNUigIT_SgzwT00wdhYwzeGtbRWgO_Bfj-uYzd3FFGvB3eh5bvo98KeZscnlLJpB3XoKMeRf6q5l2iLYxA2lDDEOMwsvIx5lMIsPnY4RfP8qXx803TGSNsN82-rir0QjqHnPDE9bE0tzVcBcuSlan6DW1jcHv_yV7IFwFPEirYpqo9FhqcywPz9-e2pHgtpQ2o82NB91-OrdgxosG5dQr1Zw9bzRyW_uRSuy8GkyWrtflETgsbFIllxpcYfdETyaeAAlx9ZCkvq43vjV-qNLOoHT0RjC7vSb9gYgBI4pPMiVtYUeVfDfZSNi8jELP51F7_I5AIHKWinUXY0WNoZk4Xf-NO=w738-h578-no" alt="">
+			<div class="carousel-caption">
+			<h1  data-animation="animated zoomInLeft" class="cap-txt "><!----></h1>
+			<p data-animation="animated bounceInDown"><!----></p>
+
+            
+			</div>
+				</div>
+			   <div class="item"><img class="img-responsive" src="https://lh3.googleusercontent.com/seWetykcj4tNW-aaA3g1Qmv89kxKpvugWr87YwayVBatmxLadqS-f8KCADZojexgNQhdxL5Pui71bSKHyyN6T5Mm_JVHbZMn0xk89_GzzslKrGVnJMuvOCNmpP2EFGiVKmAkIuaXRbwL8VgN85fdn7dG8Gg925ggzQ0oam5M918sVw-wYdPFGQRnMMnMlL57pS57JRMpYIDW3wDyOggGhxkXq4mgFrletusFg7axZVolU9XqVS8eNnq5v4pjyEYlTvvWpb-S1xlVz9AdvO8Wwq991vpDnEAFWyhdd4ovUuQebRXklo6Wy4evkdsw49T3O0SBRo1Q-oKX0a6ZuymiGzVS3Bwx1I1qnMfrDebavHCS60JFuD21-fqE6irdBLVfofog5KfOKLE-e9cKRjIA86A0JayD1wbsJU0bo0zAGiLDsphsZRlkdC48bJRAeFFGvhw9Y0pHNykLlsJveExx0IhL0xuWx7mluJmIQ8NaKY0zu_sU9-WMOfqW30jGLa8SA7Z9T_JGkLBKUatK8zphmKE7au62n9neaXlEyw3ycyJMpN3PPYhmq-8nhXrQl4yuuBOboxy1JuO67Rio5t8XLlfx8jcKJ9sNUPRrzeVYEQc5e5crWJ0W=w941-h662-no" alt="">
+				  <div class="carousel-caption">
+					<h1 data-animation="animated zoomInLeft" class="cap-txt"><!---SILVER LININGS---></h1>
+					<p data-animation="animated bounceInDown"><!---Cool down with handmade<br>sterling silver pieces---></p>
+		
+				  </div>
+				</div>
+				<div class="item"><img class="img-responsive" src="https://lh3.googleusercontent.com/uGvrEuUqHUShJE1cGwnF_hjz7jRk4HIvBalWihgtzVbx2hwDrLWDGQ6cZfBGO72N4wc28rLi9wpRNlHEBAnymPbuUQyCLoxuq-8goNP0aK1bt60Ku9HmKzIt6Nnk_tnA7g55-669ZvFDVjxXLRTKgl6XXrVY1y3IuEEoV6I-VMTKFBTi1L1UAc57Ck3OUdRvIQKhHFzmACAfpx0xXZZgPJeVCs1939YKWJ0GWeCJe3FT8OM8aKvLcKv3ZyH_qQdfkYiZz6RcViBMYOw455YLdYwPK73A9s7kjpq9lun9vQYwNn2DaWCOyBFT5jw5TiLeUC-NoC8LKhyGI4W7llND-PVYjD53b5uBISRokBfh11j-URpFk6yh1rUSClcY9QrMzYJUSxjJIF4A1EGbigseFPYhsbb7Gt2mKXR5BcLr_sRJ-SSheeJPj9_1kGtkAV5Om4ktc7GE8Dx5mLfwUzPmllpffahlKHha2jhXbhceyBEaooN8oHYtq2sgN3VWbq9I89p9MCUWNINhKS9XGUvs8t5mcXuRLA57A1qf3_OWciNClS6LxcwIV5ZiJE2RL6jtpwtvhhQRLBJeHegLQRSAtfOlk7LG9vdL_0_QUSclWfnYxiclpTRE=w941-h662-no" alt="">
+				  <div class="carousel-caption animated slideInLeft">
+					<h1 data-animation="animated zoomInLeft" class="cap-txt"><!--some text here---></h1>
+					<p data-animation="animated bounceInDown"><!---some text here--></p>
+				
+				  </div>
+				</div>
+			<!-- Carousel nav -->
+			<a class="carousel-control left" style="color:#fff;" href="#sg-carousel" data-slide="prev">‹</a>
+			<a class="carousel-control right" href="#sg-carousel" style="color:#fff;" data-slide="next">›</a>
+      </div>  
+		</div> 
+	</div>
+
+  
+  
+      <div class="row">
+          <div class="column1">
+          <h1 class="header-column">SPECIAL FOR YOU</h1>
+          <p class="p-column">Immerse in the world of exclusive and affordable jewelry with our store! We offer
+necklaces, rings, and other jewelry for any occasion at reasonable prices.</p>
+  
+           </div> <!--row-->
+        </div> <!-- column1 -->
+   
+  
+        
+  <!-----------------------------------             slider text------------------------------------------->
+  
+
+  
+<div class="container">
+  <div class="row" id="slider-text">
+    <div class="col-md-6" >
+      <h2>NEW COLLECTION</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Item slider-->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="carousel carousel-showmanymoveone slide" id="itemslider">
+        <div class="carousel-inner">
+
+          <div class="item active">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="https://image.ibb.co/dog41a/ITEM1.jpg" class="img-responsive center-block"></a>
+              <h4 class="text-center">ROSE GOLD HEARTBEAT RING</h4>
+              <h5 class="text-center">CANADA 150</h5>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="https://image.ibb.co/juuDuv/ITEM2.png" class="img-responsive center-block"></a>
+              <h4 class="text-center">THE ESSENTIAL BEACH RING</h4>
+              <h5 class="text-center">CANADA 150</h5>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="https://image.ibb.co/jqbOSF/ITEM4.jpg" class="img-responsive center-block"></a>
+              <span class="badge">10%</span>
+              <h4 class="text-center">ROSE GOLD CUFF RING</h4>
+              <h5 class="text-center">CANADA 150</h5>
+              <h6 class="text-center">CANADA 135</h6>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="https://image.ibb.co/j3fiSF/ITEM5.jpg" class="img-responsive center-block"></a>
+              <h4 class="text-center">ROSE GOLD GEOMETRIC RING</h4>
+              <h5 class="text-center">CANADA 150</h5>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="https://image.ibb.co/b74cnF/ITEM6.jpg" class="img-responsive center-block"></a>
+              <h4 class="text-center">ROSE GOLD HOLLOW CUFF RING</h4>
+              <h5 class="text-center">CANADA 150</h5>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="col-xs-12 col-sm-6 col-md-2">
+              <a href="#"><img src="https://image.ibb.co/hp9fra/item7.jpg" class="img-responsive center-block"></a>
+              <h4 class="text-center">LUCKY BAMBOO RING</h4>
+              <h5 class="text-center">CANADA 150</h5>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="slider-control">
+        <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://s12.postimg.org/uj3ffq90d/arrow_left.png" alt="Left" class="img-responsive"></a>
+        <a class="right carousel-control" href="#itemslider" data-slide="next"><img src="https://s12.postimg.org/djuh0gxst/arrow_right.png" alt="Right" class="img-responsive"></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Item slider end-->
+
+  
+
+  </body>
+</html>
